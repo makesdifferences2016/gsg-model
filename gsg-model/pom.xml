@@ -10,7 +10,7 @@
   	<groupId>fr.jambar</groupId>
   	<artifactId>gsg-parent</artifactId>
   	<version>0.0.1-SNAPSHOT</version>
-  	<relativePath>../gsg-parent</relativePath>
+  	<relativePath>../../../workspace/test/gsg-parent</relativePath>
   </parent>
   <properties>
 		<java-version>1.7</java-version>

@@ -13,46 +13,4 @@
 
        <!-- Root Context: defines shared resources visible to all other web components -->
 
-       <bean id="propertyConfigurer"
-            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-           
-           <property name="locations">
-                 <list>
-                      <value>classpath:database.properties</value>
-                 </list>
-           </property>
-       </bean>
-
-       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-              destroy-method="close" 
-              p:driverClassName="${jdbc.driverClassName}"
-              p:url="${jdbc.url}" 
-              p:username="${jdbc.username}" 
-              p:password="${jdbc.password}" />
-
-       <bean id="sessionFactory"
-              class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-              <property name="dataSource" ref="dataSource" />
-
-              <property name="packagesToScan">
-                     <list>
-                           <value>fr.jambar.gsg.model</value>
-                     </list>
-              </property>
-              <property name="hibernateProperties">
-                     <props>
-                           <prop key="hibernate.hbm2ddl.auto">update</prop>
-                           <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                           <prop key="hibernate.show_sql">false</prop>
-                     </props>
-              </property>
-       </bean>
-
-       <bean id="transactionManager"
-              class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-              <property name="sessionFactory" ref="sessionFactory" />
-       </bean>
-
-       <tx:annotation-driven transaction-manager="transactionManager" />
-       <context:component-scan base-package="fr.jambar.gsg.model" />
 </beans>
